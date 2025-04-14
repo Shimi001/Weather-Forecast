@@ -1,0 +1,10 @@
+body {
+    background-color: #62badb;
+    font-family: Comic Sans MS, sans-serif; /* Calibri, Comic Sans MS */
+}
+
+h1 {
+    color: #fff;
+    text-align: center;
+    font-size: 80px;
+}
