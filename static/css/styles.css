@@ -1,19 +1,19 @@
 body {
-    background-image: url("/static/images/background.jpg"); /* Adjust path as needed */
+    background-image: url("/static/images/background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    font-family: Comic Sans MS, sans-serif; /* Calibri, Comic Sans MS */
+    font-family: Comic Sans MS, sans-serif; 
 }
 
 h1 {
-    color: #000000;
+    color: #ffffff;
     text-align: center;
     font-size: 80px;
 }
 
 p {
-    color: #000000;
+    color: #ffffff;
     text-align: center;
     font-size: 50px;
 }
