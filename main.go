@@ -1,12 +1,17 @@
 package main
 
 import (
+	"encoding/json"
 	"net/http"
 	"os"
 	"text/template"
 
 	"github.com/joho/godotenv"
 )
+
+type WeatherData struct {
+	City string `json:"city"`
+}
 
 func main() {
 	// Load environment variables from .env file
@@ -32,6 +37,19 @@ func main() {
 			http.Error(w, "API_KEY not set in .env file", http.StatusInternalServerError)
 			return
 		}
+
+		сity := r.URL.Query().Get("city")
+		if сity == "" {
+			http.Error(w, "City parameter is required", http.StatusBadRequest)
+			return
+		}
+
+		data := WeatherData{
+			City: сity,
+		}
+
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(data)
 	})
 
 	http.ListenAndServe(":80", nil)
