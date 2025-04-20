@@ -1,0 +1,7 @@
+body {
+    background-image: url("/static/images/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: Comic Sans MS, sans-serif; 
+}
