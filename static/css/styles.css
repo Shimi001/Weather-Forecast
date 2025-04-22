@@ -1,7 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
 body {
-    background-image: url("/static/images/background.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    font-family: Comic Sans MS, sans-serif; 
+    background-color: #111;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+header {
+    padding: 1rem 0;
+}
+
+.weather-text {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.forecast-text {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    color: #bbbbbb
 }

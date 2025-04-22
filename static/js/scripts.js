@@ -9,4 +9,4 @@ function getWeather(city) {
     .catch(error => console.error("Error fetching weather data:", error));
 }
 
-getWeather("Kyiv");
+getWeather("Kropyvnytskyi");
