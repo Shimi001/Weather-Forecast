@@ -10,13 +10,50 @@
 <body>
     <header>
         <div class="logo">
-            <div class="weather-text">WE☁️ER</div>
+            <div class="weather-text">WE<span class="logo-icon">☁️</span>ER</div>
             <div class="forecast-text">FORECAST</div>
         </div>
     </header>
 
-    <h1>Weather in <span id="city"></span></h1>
-    <h1>Temperature: <span id="temp"></span></h1>
-    <h1>Description: <span id="desc"></span></h1>
+    <main>
+        <button class="nav-arrow prev">‹</button>
+
+        <div class="weather-container">
+            <div class="location-title">
+                <span class="city-name">CITY_NAME</span>
+            </div>
+            <div class="weather-circle">
+                <div class="temperature">XX°</div>
+
+                <div class="weather-icon">
+                    WEATHER_ICON
+                </div>
+
+                <div class="japanese-date">
+                    <span>--</span>
+                    <span>曜</span>
+                    <span>日</span>
+                </div>
+            </div>
+
+            <div class="weather-info">
+                <h1>DAY_OF_THE_WEEK</h1>
+                <h2>DDth MMMM</h2>
+                <p class="forecast-details">
+                    WEATHER_CONDITION. Temperature range from MIN_TEMP °C to MAX_TEMP °C. Maximum wind speed of MAX_WIND_SPEED km/h. RAIN_CHANCE chance of rain.
+                </p>
+            </div>
+        </div>
+
+        <div class="day-indicators">
+            <span class="active"></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <button class="nav-arrow next">›</button>
+    </main>
 </body>
 </html>
