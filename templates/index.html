@@ -5,46 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Forecast</title>
     <link rel="stylesheet" href="/static/css/styles.css">
-    <script src="../static/js/scripts.js" defer></script>
+    <script type="module" src="../static/js/scripts.js" defer></script>
 </head>
 <body>
     <header>
+        <!--Website logo-->
         <div class="logo">
-            <div class="weather-text">WE<span class="logo-icon">☁️</span>ER</div>
+            <div class="weather-text">WE<span class="logo-icon" alt="">☁️</span>ER</div>
             <div class="forecast-text">FORECAST</div>
         </div>
     </header>
 
     <main>
+        <!--Left button-->
         <button class="nav-arrow prev">‹</button>
 
+        <!--Weather container-->
         <div class="weather-container">
             <div class="location-title">
-                <span class="city-name">CITY_NAME</span>
+                <span class="city-name">CITY</span>
             </div>
+            <!--Weather circle-->
             <div class="weather-circle">
-                <div class="temperature">XX°</div>
+                <div class="temperature">-°</div>
 
+                <!--Weather icon-->
                 <div class="weather-icon">
-                    WEATHER_ICON
+                    ICON
                 </div>
 
+                <!--Japanese date-->
                 <div class="japanese-date">
-                    <span>--</span>
+                    <span class="japanese-placeholder">--</span>
                     <span>曜</span>
                     <span>日</span>
                 </div>
             </div>
 
+            <!--Weather info-->
             <div class="weather-info">
-                <h1>DAY_OF_THE_WEEK</h1>
+                <h1>DAY</h1>
                 <h2>DDth MMMM</h2>
                 <p class="forecast-details">
-                    WEATHER_CONDITION. Temperature range from MIN_TEMP °C to MAX_TEMP °C. Maximum wind speed of MAX_WIND_SPEED km/h. RAIN_CHANCE chance of rain.
+                    CONDITION. Temperature range from MIN °C to MAX °C. Maximum wind speed of SPEED km/h. CHANCE chance of rain.
                 </p>
             </div>
         </div>
 
+        <!--Day indicators-->
         <div class="day-indicators">
             <span class="active"></span>
             <span></span>
@@ -53,6 +61,7 @@
             <span></span>
         </div>
 
+        <!--Right button-->
         <button class="nav-arrow next">›</button>
     </main>
 </body>

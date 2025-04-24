@@ -1,17 +1,11 @@
-// const cityElement = document.querySelector('.city-name');
+import * as func from './functions.js';
+import { cityName } from './utils.js';
 
-function getWeather(city) {
-    fetch(`/weather?city=${city}`)
-    .then(response => response.json())
-    .then(data => {
-        document.getElementById("city").innerText = data.city;
-        document.getElementById("temp").innerText = data.temp;
-        document.getElementById("desc").innerText = data.desc;
-    })
-    .catch(error => console.error("Error fetching weather data:", error));
-}
+// Get the current date and day of the week
+const today = new Date();
+const dayOfWeek = today.getDay(); // Get the current day of the week (0-6)
 
-const cityName = "Kropyvnytskyi";
-// cityElement.textContent = cityName;
-
-getWeather(cityName);
+// Call the functions to set up the page
+func.getWeatherInCircle(cityName); // Fetch and display weather data
+func.setDayColors(dayOfWeek); // Set the colors for the weather circle and day indicators
+func.setDayNames(today, dayOfWeek); // Set the day names and date

@@ -1,4 +1,4 @@
-/* --STYLES-- */
+/* --GLOBAL STYLES-- */
 
 * {
     margin: 0;
@@ -8,12 +8,12 @@
 }
 
 body {
-    background-color: #111;
-    color: white;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
     padding: 2rem;
+    background-color: #111;
+    color: #fff;
 }
 
 /* --HEADER-- */
@@ -34,9 +34,9 @@ header {
 }
 
 .forecast-text {
+    color: #bbb;
     font-size: 1.2rem;
     letter-spacing: 1px;
-    color: #bbbbbb
 }
 
 /* --MAIN-- */
@@ -44,8 +44,8 @@ header {
 main {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     flex-grow: 1;
 }
 
@@ -53,9 +53,8 @@ main {
 
 .weather-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
     position: relative;
+    justify-content: center;
     width: 80%;
 }
 
@@ -63,19 +62,19 @@ main {
 
 .location-title {
     position: absolute;
-    top: -160px;
+    top: -150px;
     left: 50%;
     transform: translateX(-50%);
-    text-align: center;
     width: 100%;
+    text-align: center;
 }
 
 .city-name {
     display: block;
     font-size: 2rem;
     font-weight: 600;
-    text-transform: uppercase;
     letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 /* --CIRCLE-- */
@@ -90,14 +89,14 @@ main {
     position: relative;
     margin-right: 4rem;
     transition: background-color 0.3s, box-shadow 0.3s;
-    background-color: #e74c3c;
+    background-color: #222;
 }
 
 .temperature {
-    font-size: 4rem;
-    font-weight: bold;
     margin-top: 4rem;
     margin-left: 1rem;
+    font-size: 4rem;
+    font-weight: 700;
 }
 
 .weather-icon {
@@ -106,8 +105,8 @@ main {
 
 .japanese-date {
     position: absolute;
-    margin-top: 7rem;
     right: 2rem;
+    margin-top: 6.5rem;
     display: flex;
     flex-direction: column;
     font-size: 1.5rem;
@@ -116,20 +115,17 @@ main {
 
 /* --WEATHER INFO-- */
 
-.wether-info {
-    flex: 1;
-}
-
 .weather-info h1 {
-    font-size: 4rem;
-    font-weight: bold;
     margin-bottom: 0.5rem;
+    font-size: 4rem;
+    font-weight: 700;
 }
 
 .weather-info h2 {
+    margin-bottom: 2rem;
     font-size: 1.5rem;
     color: #999;
-    margin-bottom: 2rem;
+    text-transform: uppercase;
 }
 
 .forecast-details {
@@ -151,16 +147,14 @@ main {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background-color: #333;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    background-color: #222;
 }
 
-.day-indicators span:nth-child(1) { background-color: #e74c3c; }
-.day-indicators span:nth-child(2) { background-color: #9b59b6; }
-.day-indicators span:nth-child(3) { background-color: #2ecc71; }
-.day-indicators span:nth-child(4) { background-color: #f1c40f; }
-.day-indicators span:nth-child(5) { background-color: #e67e22; }
+.day-indicators span:nth-child(1) { background-color: #222; }
+.day-indicators span:nth-child(2) { background-color: #333; }
+.day-indicators span:nth-child(3) { background-color: #444; }
+.day-indicators span:nth-child(4) { background-color: #555; }
+.day-indicators span:nth-child(5) { background-color: #666; }
 
 .day-indicators span.active {
     transform: scale(1.2);
@@ -172,14 +166,20 @@ main {
     position: absolute;
     top: 45%;
     transform: translateY(-50%);
+
     background: none;
     border: none;
-    color: white;
+
+    color: #fff;
     font-size: 4rem;
+
+    padding: 2rem;
+    
     cursor: pointer;
-    padding: 1rem;
+
     opacity: 0.7;
     transform: scale(1);
+
     transition: transform 0.2s ease, opacity 0.3s;
 }
 
@@ -190,8 +190,10 @@ main {
 
 .prev {
     left: 2rem;
+    margin-left: 2rem;
 }
 
 .next {
     right: 2rem;
+    margin-right: 2rem;
 }
