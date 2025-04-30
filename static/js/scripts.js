@@ -12,13 +12,13 @@ func.setDayColors(dayOfWeek); // Set the colors for the weather circle and day i
 func.setDayNames(today, dayOfWeek); // Set the day names and date
 */
 
-fetch('/weather?city=London')
+fetch('/weather?city=Lviv')
     .then(response => response.json())
     .then(data => {
-    console.log(data.city); 
-    console.log(data.desc);
-    console.log(data.temp); 
-    console.log(data.temp_min);
-    console.log(data.temp_max);
-    console.log(data.wind_speed)
+    console.log("condition " + data.condition);
+    console.log("temp " + data.temp); 
+    console.log("temp_min " + data.temp_min);
+    console.log("temp_max " + data.temp_max);
+    console.log("wind_speed " + data.wind_speed)
+    console.log("rain_chance " + data.rain_chance);
 })

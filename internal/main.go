@@ -15,6 +15,7 @@ func main() {
 		panic(".env file not found")
 	}
 
+	// Set API key from environment variable
 	setApiKey()
 
 	// Set up a simple web server
@@ -25,6 +26,7 @@ func main() {
 	// Serve the main page
 	http.HandleFunc("/", mainPageHandler(tmpl))
 	http.HandleFunc("/weather", weatherHandler())
+	http.HandleFunc("/forecast", forecastHandler())
 
 	// Start the server on port 80
 	http.ListenAndServe(":80", nil)
