@@ -18,11 +18,11 @@ func setApiKey() {
 
 // Struct for holding weather data after decoding JSON response
 type WeatherData struct {
-	Temp       float64 `json:"temp"`
-	TempMin    float64 `json:"temp_min"`
-	TempMax    float64 `json:"temp_max"`
-	TempAvg    float64 `json:"temp_avg"`
-	Condition  string  `json:"condition"` // Condition
-	WindSpeed  float64 `json:"wind_speed"`
-	RainChance int8    `json:"rain_chance"`
+	Temp         float64 `json:"temp"`
+	MinTemp      float64 `json:"mintemp"`
+	MaxTemp      float64 `json:"maxtemp"`
+	AvgTemp      float64 `json:"avgtemp"`
+	Condition    string  `json:"condition"` // Condition
+	WindSpeed    float64 `json:"wind_speed"`
+	ChanceOfRain int8    `json:"chance_of_rain"`
 }
