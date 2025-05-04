@@ -1,7 +1,11 @@
+export const prevButtonElement = document.querySelector('.nav-arrow.prev');
+export const nextButtonElement = document.querySelector('.nav-arrow.next');
 export const cityElement = document.querySelector('.city-name');
-export const tempElement = document.querySelector('.temperature');
 export const circleElement = document.querySelector('.weather-circle');
-export const dayIndicators = document.querySelectorAll('.day-indicators span');
+export const tempElement = document.querySelector('.temperature');
+export const weatherIcon = document.querySelector('.weather-icon');
+export const japaneseDayElement = document.querySelector('.japanese-placeholder');
 export const dayElement = document.querySelector('.weather-info h1');
 export const dateElement = document.querySelector('.weather-info h2');
-export const japaneseDayElement = document.querySelector('.japanese-placeholder');
+export const forecastDetailsElement = document.querySelector('.forecast-details');
+export const dayIndicatorsElement = document.querySelectorAll('.day-indicators span');

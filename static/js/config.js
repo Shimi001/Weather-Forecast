@@ -1,4 +1,7 @@
-export const cityName = "Kropyvnytskyi"; // Default city name
+export const cityName = "Lviv"; // Default city name
+
+export let forecast = [];
+export let currentIndex = 0;
 
 // Colors for circle backgrounds
 export const dayColors = {

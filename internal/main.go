@@ -25,7 +25,6 @@ func main() {
 
 	// Serve the main page
 	http.HandleFunc("/", mainPageHandler(tmpl))
-	http.HandleFunc("/weather", weatherHandler())
 	http.HandleFunc("/forecast", forecastHandler())
 
 	// Start the server on port 80
