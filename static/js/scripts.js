@@ -3,15 +3,14 @@ import * as func from './functions.js';
 import { cityName, currentIndex, forecast } from './config.js';
 
 fetch(`/forecast?city=${cityName}`)
-    .then(response => response.json())
-    .then(data => {
-        console.log(`Forecast data for ${cityName}:`, data);
+.then(response => response.json())
+.then(data => {
+    console.log(`Forecast data for ${cityName}:`, data);
+    forecast.push(...data);
 
-        forecast.push(...data);
-        func.renderForecast(currentIndex, forecast);
-    });
-
-// func.buttonEventListeners(); // Add event listeners to the buttons
+    func.renderForecast(currentIndex, forecast);
+    func.buttonEventListeners(currentIndex, forecast); // Add event listeners to the buttons
+});
 
 /*
 // Get the current date and day of the week

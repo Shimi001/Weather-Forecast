@@ -20,7 +20,7 @@ func setApiKey() {
 type WeatherData struct {
 	MinTemp      float64 `json:"mintemp"`
 	MaxTemp      float64 `json:"maxtemp"`
-	AvgTemp      float64 `json:"avgtemp"`
+	AvgTemp      float64 `json:"avgtemp"`   // Average or current temperature
 	Condition    string  `json:"condition"` // Condition
 	WindSpeed    float64 `json:"wind_speed"`
 	ChanceOfRain int8    `json:"chance_of_rain"`

@@ -115,6 +115,10 @@ main {
 
 /* --WEATHER INFO-- */
 
+.weather-info {
+    position: relative;
+}
+
 .weather-info h1 {
     margin-bottom: 0.5rem;
     font-size: 4rem;

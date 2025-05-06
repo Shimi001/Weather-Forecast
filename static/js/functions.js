@@ -3,25 +3,27 @@ import { dayColors, japaneseDays } from './config.js';
 
 export function renderForecast(currentIndex, forecast) {
     const data = forecast[currentIndex];
-    DOM.forecastDetailsElement.textContent = `${data.condition} .Temperature range from ${Math.round(data.mintemp)}°C to ${Math.round(data.maxtemp)}°C. Maximum wind speed ${data.wind_speed} km/h. ${data.chance_of_rain}% daily chance of rain.`;
+    DOM.forecastDetailsElement.innerHTML = 
+    `${data.condition}. Temperature range from ${Math.round(data.mintemp)}°C to ${Math.round(data.maxtemp)}°C.<br>` +
+    `Maximum wind speed ${Math.round(data.wind_speed)} km/h. ${data.chance_of_rain}% daily chance of rain.`;
 }
 
-// // buttons
-// export const buttonEventListeners = () => {
-//     DOM.prevButtonElement.addEventListener("click", () => {
-//         if (currentIndex < forecast.length - 1) {
-//             currentIndex++;
-//             renderForecast(currentIndex);
-//         }
-//     });
+// Buttons
+export const buttonEventListeners = (currentIndex, forecast) => {
+    DOM.nextButtonElement.addEventListener("click", () => {
+        if (currentIndex < forecast.length - 1) {
+            currentIndex++;
+            renderForecast(currentIndex, forecast);
+        }
+    });
 
-//     DOM.nextButtonElement.addEventListener("click", () => {
-//         if (currentIndex > 0) {
-//             currentIndex--;
-//             renderForecast(currentIndex);
-//         }
-//     });
-// }
+    DOM.prevButtonElement.addEventListener("click", () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            renderForecast(currentIndex, forecast);
+        }
+    });
+}
 
 // // Fetch weather data and update the circle
 // export function getWeatherInCircle(city) {

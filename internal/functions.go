@@ -25,7 +25,7 @@ func forecastHandler() http.HandlerFunc {
 			return
 		}
 
-		// URL for getting current weather data
+		// URL for the weather API forecast
 		apiURL := fmt.Sprintf("http://api.weatherapi.com/v1/forecast.json?key=%s&q=%s&days=7&aqi=no&alerts=no", apiKey, city)
 		resp, err := http.Get(apiURL)
 		if err != nil {
@@ -37,7 +37,7 @@ func forecastHandler() http.HandlerFunc {
 		// Read the response body
 		body, _ := io.ReadAll(resp.Body)
 
-		// Forecast weather API response struct
+		// Struct for decoding JSON response
 		var apiResp struct {
 			Current struct {
 				AvgTemp   float64 `json:"temp_c"` // Current temperature
@@ -65,9 +65,10 @@ func forecastHandler() http.HandlerFunc {
 		// Decode JSON response into the apiResp struct
 		json.Unmarshal(body, &apiResp)
 
-		// Decoded data from apiResp
+		// Array to hold weather data
 		var data []WeatherData
 
+		// Current weather data [0] index
 		data = append(data, WeatherData{
 			AvgTemp:      apiResp.Current.AvgTemp, // Current temperature
 			MinTemp:      apiResp.Forecast.Forecastday[0].Day.MinTemp,
@@ -77,6 +78,7 @@ func forecastHandler() http.HandlerFunc {
 			ChanceOfRain: apiResp.Forecast.Forecastday[0].Day.ChanceOfRain,
 		})
 
+		// Forecast data [1:] index
 		for _, day := range apiResp.Forecast.Forecastday[1:] {
 			data = append(data, WeatherData{
 				MinTemp:      day.Day.MinTemp,
