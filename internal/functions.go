@@ -26,7 +26,7 @@ func forecastHandler() http.HandlerFunc {
 		}
 
 		// URL for the weather API forecast
-		apiURL := fmt.Sprintf("http://api.weatherapi.com/v1/forecast.json?key=%s&q=%s&days=7&aqi=no&alerts=no", apiKey, city)
+		apiURL := fmt.Sprintf("http://api.weatherapi.com/v1/forecast.json?key=%s&q=%s&days=3&aqi=no&alerts=no", apiKey, city)
 		resp, err := http.Get(apiURL)
 		if err != nil {
 			http.Error(w, "Failed to get weather", http.StatusInternalServerError)
