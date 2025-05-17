@@ -118,6 +118,7 @@ main {
 .weather-info {
     position: relative;
     width: 510px;
+    white-space: nowrap; 
 }
 
 .weather-info h1 {

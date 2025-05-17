@@ -1,78 +1,83 @@
+import { today, date, dayColors, japaneseDays } from './config.js';
 import * as DOM from './domElements.js';
-import { dayColors, japaneseDays } from './config.js';
 
-export function renderForecast(currentIndex, forecast) {
+// Circle Color
+export function circleColor(dayOfWeek){
+    const circleColor = dayColors[dayOfWeek];
+    DOM.circleElement.style.backgroundColor = circleColor;
+    DOM.circleElement.style.boxShadow = `0 0 30px ${circleColor}4D`;
+}
+
+// Day Indecators
+export function dayIndicators(){
+    // Day idicators colors
+    DOM.dayIndicatorsElement.forEach((indicator, index) => {
+        const colorIndex = (today + index) % 7;
+        indicator.style.backgroundColor = dayColors[colorIndex];
+    });
+}
+
+// weather-circle
+export function weatherCircle(forecast, currentIndex, dayOfWeek){
     const data = forecast[currentIndex];
+    DOM.tempElement.textContent = `${Math.round(data.avgtemp)}°`; // Temperature
+    DOM.japaneseDayElement.textContent = japaneseDays[dayOfWeek];
+}
+ 
+// weather-info
+export function weatherInfo(currentIndex, dayOfWeek, forecast){
+    const data = forecast[currentIndex];
+
+    // h1 - day
+    DOM.dayElement.textContent = date.toLocaleString('en-US', { weekday: 'long' });
+
+    // h2 - date
+    function getOrdinalSuffix(n) {
+        if (n > 3 && n < 21) return 'th';
+        switch (n % 10) {
+          case 1:  return 'st';
+          case 2:  return 'nd';
+          case 3:  return 'rd';
+          default: return 'th';
+        }
+    }
+
+    const day = date.getDate();
+    const month = date.toLocaleString('en-US', { month: 'long' });
+    const dayWithSuffix = `${day}${getOrdinalSuffix(day)}`;
+    const formatted = `${dayWithSuffix} ${month}`;
+
+    DOM.dateElement.textContent = formatted;
+
+    // weather-details
     DOM.forecastDetailsElement.innerHTML = 
     `${data.condition}. Temperature range from ${Math.round(data.mintemp)}°C to ${Math.round(data.maxtemp)}°C.<br>` +
     `Maximum wind speed ${Math.round(data.wind_speed)} km/h. ${data.chance_of_rain}% daily chance of rain.`;
 }
 
-// Buttons
-export const buttonEventListeners = (currentIndex, forecast) => {
+// Prev and next arrows buttons
+export const arrowsButtons = (currentIndex, dayOfWeek, forecast) => {
+    // nav-arrow next
     DOM.nextButtonElement.addEventListener("click", () => {
         if (currentIndex < forecast.length - 1) {
             currentIndex++;
-            renderForecast(currentIndex, forecast);
+            date.setDate(date.getDate() + 1);
+            dayOfWeek = (dayOfWeek + 1) % 7;
+            circleColor(dayOfWeek);
+            weatherCircle(forecast, currentIndex, dayOfWeek);
+            weatherInfo(currentIndex, dayOfWeek, forecast);
         }
     });
 
+    // nav-arrow prev
     DOM.prevButtonElement.addEventListener("click", () => {
         if (currentIndex > 0) {
             currentIndex--;
-            renderForecast(currentIndex, forecast);
+            date.setDate(date.getDate() - 1);
+            dayOfWeek = (dayOfWeek - 1 + 7) % 7;
+            circleColor(dayOfWeek);
+            weatherCircle(forecast, currentIndex, dayOfWeek);
+            weatherInfo(currentIndex, dayOfWeek, forecast);
         }
     });
 }
-
-// // Fetch weather data and update the circle
-// export function getWeatherInCircle(city) {
-//     fetch(`/weather?city=${city}`)
-//         .then(response => response.json())
-//         .then(data => {
-//             DOM.cityElement.textContent = data.city;
-//             DOM.tempElement.textContent = `${Math.round(data.temp)}°`;
-//         })
-//         .catch(error => console.error("Error fetching weather data:", error));
-// }
-
-// // Set the background color of the weather circle and day indicators
-// export function setDayColors(dayOfWeek) {
-//     // Set the background color of the weather circle
-//     const circleColor = dayColors[dayOfWeek];
-//     DOM.circleElement.style.backgroundColor = circleColor;
-//     DOM.circleElement.style.boxShadow = `0 0 30px ${circleColor}4D`;
-
-//     // Loop through the day indicators and assign colors
-//     DOM.dayIndicators.forEach((indicator, index) => {
-//         const colorIndex = (dayOfWeek + index) % 7; // Calculate the day index cyclically
-//         indicator.style.backgroundColor = dayColors[colorIndex];
-//     });
-// }
-
-// // Set the day names and date
-// export function setDayNames(today, dayOfWeek) {
-//     const dayOfWeekEnglish = today.toLocaleString('en-US', { weekday: 'long' }); // Get the English name of the current day
-//     const dayOfWeekJapanese = japaneseDays[dayOfWeek]; // Get the Japanese character for the current day
-
-//     DOM.dayElement.textContent = dayOfWeekEnglish; // Set the English name of the current day
-//     DOM.japaneseDayElement.textContent = dayOfWeekJapanese; // Set the Japanese character for the current day
-
-//     const month = today.toLocaleString('en-US', { month: 'long' });
-
-//     function getOrdinalSuffix(n) {
-//         if (n > 3 && n < 21) return 'th';
-//         switch (n % 10) {
-//           case 1:  return 'st';
-//           case 2:  return 'nd';
-//           case 3:  return 'rd';
-//           default: return 'th';
-//         }
-//     }
-
-//     const day = today.getDate();
-//     const dayWithSuffix = `${day}${getOrdinalSuffix(day)}`;
-//     const formatted = `${dayWithSuffix} ${month}`;
-
-//     DOM.dateElement.textContent = formatted; // Set the formatted date
-// }

@@ -3,6 +3,10 @@ export const cityName = "Washington"; // Default city name
 export let forecast = [];
 export let currentIndex = 0;
 
+export const date = new Date();
+export let dayOfWeek = date.getDay(); // Get the current day of the week (0-6)
+export const today = dayOfWeek;
+
 // Colors for circle backgrounds
 export const dayColors = {
     0: '#34495e',  // Sunday - Dark Blue
