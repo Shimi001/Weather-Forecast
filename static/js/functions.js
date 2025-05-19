@@ -1,4 +1,5 @@
 import { today, date, dayColors, japaneseDays } from './config.js';
+import { mainDisplayFuction } from './scripts.js';
 import * as DOM from './domElements.js';
 
 // Circle Color
@@ -9,23 +10,28 @@ export function circleColor(dayOfWeek){
 }
 
 // Day Indecators
-export function dayIndicators(){
+export function dayIndicators(currentIndex){
     // Day idicators colors
     DOM.dayIndicatorsElement.forEach((indicator, index) => {
         const colorIndex = (today + index) % 7;
         indicator.style.backgroundColor = dayColors[colorIndex];
     });
+
+    // Highlight the active day indicator based on the current index
+    DOM.dayIndicatorsElement.forEach((el, i) => {
+        el.classList.toggle('active', i === currentIndex);
+    });
 }
 
 // weather-circle
-export function weatherCircle(forecast, currentIndex, dayOfWeek){
+export function weatherCircle(currentIndex, dayOfWeek, forecast){
     const data = forecast[currentIndex];
     DOM.tempElement.textContent = `${Math.round(data.avgtemp)}°`; // Temperature
     DOM.japaneseDayElement.textContent = japaneseDays[dayOfWeek];
 }
  
 // weather-info
-export function weatherInfo(currentIndex, dayOfWeek, forecast){
+export function weatherInfo(currentIndex, forecast){
     const data = forecast[currentIndex];
 
     // h1 - day
@@ -56,16 +62,14 @@ export function weatherInfo(currentIndex, dayOfWeek, forecast){
 }
 
 // Prev and next arrows buttons
-export const arrowsButtons = (currentIndex, dayOfWeek, forecast) => {
+export const arrowsButtons = (currentIndex, dayOfWeek, forecast) => {   
     // nav-arrow next
     DOM.nextButtonElement.addEventListener("click", () => {
         if (currentIndex < forecast.length - 1) {
             currentIndex++;
             date.setDate(date.getDate() + 1);
             dayOfWeek = (dayOfWeek + 1) % 7;
-            circleColor(dayOfWeek);
-            weatherCircle(forecast, currentIndex, dayOfWeek);
-            weatherInfo(currentIndex, dayOfWeek, forecast);
+            mainDisplayFuction(currentIndex, dayOfWeek, forecast);
         }
     });
 
@@ -75,9 +79,7 @@ export const arrowsButtons = (currentIndex, dayOfWeek, forecast) => {
             currentIndex--;
             date.setDate(date.getDate() - 1);
             dayOfWeek = (dayOfWeek - 1 + 7) % 7;
-            circleColor(dayOfWeek);
-            weatherCircle(forecast, currentIndex, dayOfWeek);
-            weatherInfo(currentIndex, dayOfWeek, forecast);
+            mainDisplayFuction(currentIndex, dayOfWeek, forecast)
         }
     });
 }

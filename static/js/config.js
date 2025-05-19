@@ -1,4 +1,4 @@
-export const cityName = "Washington"; // Default city name
+export const cityName = "Tokyo"; // Default city name
 
 export let forecast = [];
 export let currentIndex = 0;
